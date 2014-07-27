@@ -1,0 +1,24 @@
+options:
+	tag: &8[&6TagAutoMsg&8]
+	czas: 60
+
+	msg1: &7wiadomosc 1
+	msg2: &7wiadomosc 2
+	msg3: &7wiadomosc 2
+
+every {@czas} real seconds:
+	{automsg} is not set:
+		set {automsg} to 1
+		stop
+	{automsg} is 1:
+		broadcast "{@tag} {@msg1}"
+		set {automsg} to 2
+		stop
+	{automsg} is 2:
+		broadcast "{@tag} {@msg2}"
+		set {automsg} to 3
+		stop
+	{automsg} is 3:
+		broadcast "{@tag} {@msg3}"
+		set {automsg} to 1
+		stop
